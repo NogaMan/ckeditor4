@@ -493,7 +493,7 @@
 				var id = getWidgetId( element );
 
 				// There's no need to check element parents if element is a wrapper.
-				if ( !checkWrapperOnly && !id ) {
+				if ( !checkWrapperOnly && !id && id !== 0 ) {
 					var limit = this.editor.editable();
 
 					// Try to find a closest ascendant which is a widget wrapper.
@@ -2633,7 +2633,7 @@
 
 			// Add support for dropping selection containing more than widget itself
 			// or more than one widget (#3441).
-			if ( !id && editor.widgets.selected.length > 0 ) {
+			if ( !id && id !== 0 && editor.widgets.selected.length > 0 ) {
 				evt.data.dataTransfer.setData( 'text/html', getClipboardHtml( editor ) );
 				return;
 			}
